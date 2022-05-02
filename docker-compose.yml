@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  cajueiro_weather_station:
+    build:
+      context: .
+      dockerfile: CajueiroWeatherStation.Dockerfile
+    logging:
+      driver: "none"
+    volumes:
+      - ./sensor_data/:/home/cajueiro/sensor_data
+    devices:
+      # Arduino
+      - /dev/ttyACM0:/dev/ttyACM0
+    env_file:
+      - .cajueiro_weather_station.env
+    command: bash -c "/home/cajueiro/entrypoint.sh --start"
+  streamer:
+    build:
+      context: .
+      dockerfile: Streamer.Dockerfile
+    logging:
+      driver: "none"
+    volumes:
+      - ./sensor_data/:/home/streamer/sensor_data
+    devices:
+      # Camera
+      - /dev/video0:/dev/video0
+    command: bash -c "/home/streamer/entrypoint.sh --start"
+  broadcaster:
+    ports:
+      - "4935:4935"
+      - "80:4080"
+    build:
+      context: .
+      dockerfile: Broadcaster.Dockerfile
+    logging:
+      driver: "none"
+    command: bash -c "/home/broadcaster/entrypoint.sh --start"
