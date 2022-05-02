@@ -53,9 +53,7 @@ module CajueiroWeatherStation
         rows = CSV.parse(data)
         result = process_parsed_rows(rows)
 
-        now = Time.now.strftime("%Y-%m-%d %H:%Mh UTC-3")
-
-        g.title = "IR-radiation-based sky temperature monitoring\nSamples from #{result[:first_entry_at]} to #{result[:last_entry_at]} UTC-3\nFile generated at #{now}"
+        g.title = "IR-radiation-based sky temperature monitoring\nSamples from #{result[:first_entry_at]} to #{result[:last_entry_at]} UTC-3"
         g.title_font_size = 20
         g.labels = result[:labels]
         g.y_axis_label = "Temp. in °C"
