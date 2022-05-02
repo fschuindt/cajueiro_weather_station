@@ -1,3 +1,7 @@
+# Cajueiro Weather Station
+
+It's [live here](https://fschuindt.github.io/blog/weather).
+
 Uses my ["NGINX RTMP/RTMPS to HLS and MPEG-Dash media stream broadcaster"](https://github.com/fschuindt/nginx_rtmp_hls_dash) repository to be able to intake the video streaming data at a given AWS EC2 server and broadcast it to all the web-based clients visiting my webpage.
 
 There's also a [post on my blog](https://fschuindt.github.io/blog/2020/12/31/streaming-video-and-audio-of-an-usb-webcam-to-multiple-users-of-a-website-with-ssl-basic-authentication-and-invideo-timestamps-ffmpeg-rtmp-nginx-hls-mpeg-dash.html) about this "RTMP -> Dash" repository.
