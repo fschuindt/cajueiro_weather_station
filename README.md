@@ -10,6 +10,12 @@ There's also a [post on my blog](https://fschuindt.github.io/blog/2020/12/31/str
 
 A small Shell script that instructs [FFmpeg](https://ffmpeg.org/) on how to gather the camera video feed and stream it to the broadcaster.
 
+## Broadcaster
+
+A NGINX server built with the [RTMP](https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol) module that's able to intake video stream and broadcast it to the web using the [Dash](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) video broadcast protocol.
+
+It serves the station webpage with the all-sky camera video feed.
+
 ## Cajueiro Weather Station (CWS) Ruby gem
 
 A Ruby program that gathers serial data from the MLX90614 infrared sensor at the Arduino board, stores it as a `.csv` and plots the graph for the visual analysis resulting in a `.png` file. This file is periodically uploaded to an AWS S3 bucket and displayed at the station webpage.
