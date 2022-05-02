@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'cajueiro_weather_station'
+
+device = ARGV[0]
+temperature_data_file = ARGV[1]
+draw_file = ARGV[2]
+
+CajueiroWeatherStation::Features::Main.perform(device, temperature_data_file, draw_file)
