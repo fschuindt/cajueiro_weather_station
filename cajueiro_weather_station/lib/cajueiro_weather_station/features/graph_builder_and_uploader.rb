@@ -4,7 +4,7 @@ module CajueiroWeatherStation
       def self.start(temperature_data_file)
         Thread.new do
           loop do
-            graph_file = GraphFileGenerator.generate(temperature_data_file, 500)
+            graph_file = GraphFileGenerator.generate(temperature_data_file, 500, 250)
             upload_to_s3(graph_file)
             sleep 3600
           end

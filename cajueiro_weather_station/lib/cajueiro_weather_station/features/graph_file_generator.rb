@@ -1,11 +1,10 @@
 module CajueiroWeatherStation
   module Features
     class GraphFileGenerator
-      def self.process_parsed_rows(rows)
+      def self.process_parsed_rows(rows, label_every)
         labels = {}
         i = 0
         j = 0
-        label_every = 200
         ambient = []
         sky = []
 
@@ -40,7 +39,7 @@ module CajueiroWeatherStation
         }
       end
 
-      def self.generate(csv_file, last_n)
+      def self.generate(csv_file, last_n, label_every)
         g = Gruff::Line.new(1600)
         g.theme = {
           colors: %w[orange purple],
@@ -51,7 +50,7 @@ module CajueiroWeatherStation
 
         data = `tail -n #{last_n} #{csv_file}`
         rows = CSV.parse(data)
-        result = process_parsed_rows(rows)
+        result = process_parsed_rows(rows, label_every)
 
         g.title = "IR-radiation-based sky temperature monitoring\nSamples from #{result[:first_entry_at]} to #{result[:last_entry_at]} UTC-3"
         g.title_font_size = 20
